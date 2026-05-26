@@ -1,7 +1,7 @@
 project:
   title:        "Configurable 8-bit PWM Generator"
   description:  "Generates a variable duty cycle PWM signal based on an 8-bit input threshold."
-  author:       "Your Name"
+  author:       "Vinuta"
   language:     "Verilog"
 
 # Address mapping to the top-level module
