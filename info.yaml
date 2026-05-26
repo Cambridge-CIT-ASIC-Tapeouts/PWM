@@ -1,13 +1,17 @@
+yaml_version: 6
+
 project:
-  title:        "Configurable 8-bit PWM Generator"
-  description:  "Generates a variable duty cycle PWM signal based on an 8-bit input threshold."
-  author:       "Vinuta"
-  language:     "Verilog"
+  title: "Configurable 8-bit PWM Generator"
+  author: "Vinuta"
+  description: "Generates a variable duty cycle PWM signal using an 8-bit input."
+  language: "Verilog"
+  clock_hz: 50000000
+  tiles: "1x1"
+  top_module: "tt_um_example"
 
-# Address mapping to the top-level module
-gds_xy: [0, 0] 
+  source_files:
+    - "project.v"
 
-# Document your pinout for testing later
 pinout:
   ui[0]: "Duty Cycle Bit 0"
   ui[1]: "Duty Cycle Bit 1"
@@ -17,7 +21,8 @@ pinout:
   ui[5]: "Duty Cycle Bit 5"
   ui[6]: "Duty Cycle Bit 6"
   ui[7]: "Duty Cycle Bit 7"
-  uo[0]: "PWM Output Signal"
+
+  uo[0]: "PWM Output"
   uo[1]: "Unused"
   uo[2]: "Unused"
   uo[3]: "Unused"
@@ -25,3 +30,12 @@ pinout:
   uo[5]: "Unused"
   uo[6]: "Unused"
   uo[7]: "Unused"
+
+  uio[0]: "Unused"
+  uio[1]: "Unused"
+  uio[2]: "Unused"
+  uio[3]: "Unused"
+  uio[4]: "Unused"
+  uio[5]: "Unused"
+  uio[6]: "Unused"
+  uio[7]: "Unused"
