@@ -28,7 +28,7 @@ module tb ();
 `endif
 
   // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  tt_um_example dut (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
@@ -45,5 +45,36 @@ module tb ();
       .clk    (clk),      // clock
       .rst_n  (rst_n)     // not reset
   );
+   always #10 clk = ~clk;
+
+  initial begin
+    // Initialize standard VCD dumping for GTKWave verification
+    $dumpfile("tb.vcd");
+    $dumpvars(0, tb);
+
+    // Initialize inputs
+    clk = 0;
+    rst_n = 0;
+    ena = 1;
+    ui_in = 8'h00;
+    uio_in = 8'h00;
+
+    // Hold reset for 40ns
+    #40;
+    rst_n = 1; // Release reset
+    
+    // Test Case 1: Set Duty Cycle to ~25% (64 / 256)
+    ui_in = 8'd64;
+    #6000; // Let it run for more than a couple of full counter cycles (256 * 20ns = 5120ns)
+
+    // Test Case 2: Change Duty Cycle to ~50% (128 / 256)
+    ui_in = 8'd128;
+    #6000;
+
+    // End simulation
+    $display("Simulation finished successfully.");
+    $finish;
+  end
+
 
 endmodule
